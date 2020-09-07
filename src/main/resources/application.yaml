@@ -1,0 +1,86 @@
+initializr:
+ env:
+   boms:
+     spring-cloud-bom:
+       groupId: org.springframework.cloud
+       artifactId: spring-cloud-dependencies
+       versionProperty: spring-cloud.version
+       mappings:
+         - compatibilityRange: "[2.2.0.M4,2.3.x.BUILD-SNAPSHOT)"
+           version: Hoxton.SR8
+ name:
+   value: svcapp
+ description:
+   value: 'A Starter Spring Boot REST Standalone Service'
+ group-id:
+   value: com.dan.ese
+ artifact-id:
+   value: svcapp
+ javaVersions:
+   - id: 11
+     default: false
+   - id: 1.8
+     default: true
+ boot-versions:
+   - id: 2.3.3.RELEASE
+     default: true
+ languages:
+   - name: Java
+     id: java
+     default: true
+   - name: Kotlin
+     id: kotlin
+     default: false
+ packagings:
+   - name: Jar
+     id: jar
+     default: true
+ types:
+   - name: Maven Project
+     id: maven-project
+     description: Generate a Maven-based project archive
+     tags:
+       build: maven
+       format: project
+     default: true
+     action: /starter.zip
+ dependencies:
+   - name: Web
+     content:
+       - name: Spring Web
+         id: web
+         description: Build web, including RESTful, applications using Spring MVC. Uses Apache Tomcat as the default embedded container.
+         facets:
+            - web
+            - json
+         links:
+           - rel: guide
+             href: https://spring.io/guides/gs/rest-service/
+             description: Building a RESTful Web Service
+           - rel: reference
+             href: https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-developing-web-applications
+           - rel: guide
+             href: https://spring.io/guides/gs/serving-web-content/
+             description: Serving Web Content with Spring MVC
+           - rel: guide
+             href: https://spring.io/guides/tutorials/bookmarks/
+             description: Building REST services with Spring
+   - name: Spring Cloud Circuit Breaker
+     content:
+       - name: Circuit Breaker using resilience4j
+         id: circuitbreaker
+         groupId: org.springframework.cloud
+         artifactId: spring-cloud-starter-circuitbreaker-resilience4j
+         bom: spring-cloud-bom
+         description: resilience4j circuitbreaker implementation behind Spring Cloud Circuit Breaker abstraction
+         links:
+           - rel: Spring Cloud
+             href: https://spring.io/projects/spring-cloud
+             description: Spring Cloud docs
+           - rel: Spring Cloud Circuit Breaker
+             href: https://spring.io/projects/spring-cloud-circuitbreaker
+             description: Spring Cloud Circuit Breaker docs
+           - rel: resilience4j
+             href: https://github.com/resilience4j/resilience4j
+             description: resilience4j main repository
+             
